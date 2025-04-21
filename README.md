@@ -17,3 +17,23 @@ This lab was designed to simulate entry-level security analyst responsibilities 
 
 ## 📁 Project Structure
 
+
+---
+
+## 🖥️ Prerequisites
+
+- VMware Workstation or Player
+- Windows 10 or Server ISO
+- Ubuntu 22.04 ISO
+- Git (if pushing via command line)
+- Basic PowerShell and Bash familiarity
+
+---
+
+## ⚙️ Setup Instructions
+
+### Windows VM
+1. Boot up the VM and open PowerShell as Administrator
+2. Run the script:
+   ```powershell
+   .\\CreateUsers.ps1
