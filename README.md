@@ -1,89 +1,92 @@
-# 🛡️ IAM & System Hardening Lab (Manual Method – Windows 11 + Ubuntu 24.04)
+# 🛡️ System Hardening Lab (Manual Method – Windows 11 + Ubuntu 24.04)
 
-This project demonstrates a manual approach to configuring **Identity and Access Management (IAM)** and **System Hardening** using the built-in tools in **Windows 11** and **Ubuntu 24.04 LTS**.
+This lab simulates a junior analyst securing systems in a realistic IT environment by manually configuring users, applying system policies, disabling unnecessary services, and enforcing security controls — all without automation.
 
-The goal is to simulate a realistic IT environment where users, groups, and security policies are managed using GUI and terminal interfaces instead of automation scripts — great for junior analysts and sysadmins in training.
+💡 Unlike my **IAM_Lab**, which uses PowerShell scripts to automate user/group creation, this lab focuses entirely on **manual configuration** using GUI tools (like `lusrmgr.msc`, `secpol.msc`) and Linux terminal commands.
 
 ---
 
 ## 🎯 Lab Objectives
-
-- Configure IAM using built-in tools (Computer Management, terminal)
-- Apply password, lockout, and access restrictions
-- Harden systems by reducing attack surface and enabling firewalls
-- Learn how to manually configure users and monitor system activity
-- Document each change with screenshots and test results
+- Apply password and lockout policies (Windows + Ubuntu)
+- Create and assign users and groups manually
+- Disable insecure or unnecessary services
+- Configure host-based firewalls (Windows Defender, UFW)
+- Document changes with screenshots and test results
 
 ---
 
 ## 💻 Lab Environment
 
 | Component | Description |
-|----------|-------------|
-| OS 1     | Windows 11 Pro |
-| OS 2     | Ubuntu 24.04 LTS |
-| Tool     | VMware Workstation or Player |
+|-----------|-------------|
+| OS 1      | Windows 11 Pro (Manual Setup) |
+| OS 2      | Ubuntu 24.04 LTS (Terminal Only) |
+| Tools     | VMware Workstation or VirtualBox |
 
 ---
 
-## 🧑‍💻 IAM Setup (Manual Method)
+## 🔐 Manual IAM Setup (Windows + Ubuntu)
 
 ### 🪟 Windows 11
+- Tool used: `lusrmgr.msc` (Local Users and Groups)
+- Users: `AdminZakiya`, `AnalystUser`, `GuestUser`, `SVC_Audit`
+- Groups: `Administrators`, `SecTeam`, `Audit`
+- Group Assignments:
+  - `AdminZakiya` → Administrators
+  - `AnalystUser` → SecTeam
+  - `SVC_Audit` → Audit
 
-**Tool used:** `lusrmgr.msc` (Computer Management)
-
-#### 🔹 Users Created:
-- `AdminZakiya` – Local Administrator
-- `AnalystUser` – Standard User
-- `GuestUser` – Guest Access
-- `SVC_Audit` – Service Account
-
-#### 🔹 Groups Created:
-- `SecTeam` – Added `AnalystUser`
-- `Audit` – Added `SVC_Audit`
-
-#### 🔹 Group Assignments:
-- `AdminZakiya` → added to `Administrators`
-- `AnalystUser` → added to `SecTeam`
-- `SVC_Audit` → added to `Audit`
+### 🐧 Ubuntu 24.04
+- Tool used: Terminal commands (`adduser`, `addgroup`, `usermod`)
+- Users: `adminzakiya`, `analystuser`, `guestuser`, `svc_audit`
+- Groups: `admin`, `secops`, `audit`
+- Group Assignments:
+  - `adminzakiya` → `sudo`, `admin`
+  - `analystuser` → `secops`
+  - `svc_audit` → `audit`
 
 ---
 
-### 🐧 Ubuntu 24.04
+## 🔒 System Hardening Techniques
 
-**Tool used:** Terminal (`adduser`, `usermod`, `addgroup`)
+### Windows 11
+- Disabled: Remote Registry, Telnet, SSDP, Print Spooler (optional)
+- Set password/lockout policies via `secpol.msc`
+- Enabled Windows Defender + Firewall
+- Configured firewall rules (blocked PowerShell + RDP, enabled logging)
 
-#### 🔹 Users Created:
-- `adminzakiya`
-- `analystuser`
-- `guestuser`
-- `svc_audit`
-
-#### 🔹 Groups Created:
-- `admin`
-- `secops`
-- `audit`
-
-#### 🔹 Group Assignments:
-- `adminzakiya` → `sudo`, `admin`
-- `analystuser` → `secops`
-- `svc_audit` → `audit`
+### Ubuntu 24.04
+- Updated packages: `sudo apt update && sudo apt upgrade -y`
+- Disabled SSH root login
+- Enforced password complexity via PAM
+- Enabled UFW firewall, default deny all, allow SSH
 
 ---
 
-## 🔒 System Hardening
+## 📷 Documentation
 
-### 🪟 Windows 11
+This lab includes:
+- Full report (PDF)
+- Step-by-step screenshots
+- Folder structure separating Windows and Ubuntu configs
+- Lessons learned + final reflection
 
-- Disabled **Remote Registry**, **Telnet**, and unused services via `services.msc`
-- Set **account lockout** and **password policies** via `secpol.msc`
-- Enabled **Windows Defender** and **Firewall**
-- Configured **Windows Firewall with Advanced Security**:
-  - Blocked inbound PowerShell and RDP
-  - Enabled firewall logging for all profiles
+---
 
-### 🐧 Ubuntu 24.04
+## 🚀 Related Lab
 
-- Updated system packages:
-  ```bash
-  sudo apt update && sudo apt upgrade -y
+📁 Also check out my [IAM_Lab (PowerShell Automation)](https://github.com/zakiya/IAM_Lab)  
+Automated approach to user/group creation, NTFS folder permissions, and access validation on Windows 11.
+
+---
+
+## 🧠 Skills Practiced
+- System administration (Windows + Linux)
+- IAM setup (manual method)
+- Host-based firewall configuration
+- Report writing + documentation
+- OS hardening techniques for entry-level security analysts
+
+---
+
+> \"Manually configured. Professionally documented.\"
