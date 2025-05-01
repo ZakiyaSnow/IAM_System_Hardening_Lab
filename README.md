@@ -29,21 +29,19 @@ This lab simulates a junior analyst securing systems in a realistic IT environme
 
 ### 🪟 Windows 11
 - Tool used: `lusrmgr.msc` (Local Users and Groups)
-- Users: `AdminZakiya`, `AnalystUser`, `GuestUser`, `SVC_Audit`
-- Groups: `Administrators`, `SecTeam`, `Audit`
+- Users: `AdminZakiya`, `AnalystUser`, `GuestUser`
+- Groups: `Administrators`, `SecTeam`
 - Group Assignments:
   - `AdminZakiya` → Administrators
   - `AnalystUser` → SecTeam
-  - `SVC_Audit` → Audit
 
 ### 🐧 Ubuntu 24.04
 - Tool used: Terminal commands (`adduser`, `addgroup`, `usermod`)
-- Users: `adminzakiya`, `analystuser`, `guestuser`, `svc_audit`
-- Groups: `admin`, `secops`, `audit`
+- Users: `adminzakiya`, `analystuser`, `guestuser`
+- Groups: `admin`, `secops`
 - Group Assignments:
   - `adminzakiya` → `sudo`, `admin`
   - `analystuser` → `secops`
-  - `svc_audit` → `audit`
 
 ---
 
@@ -89,4 +87,5 @@ Automated approach to user/group creation, NTFS folder permissions, and access v
 
 ---
 
-> \"Manually configured. Professionally documented.\"
+> "Manually configured. Professionally documented."
+
